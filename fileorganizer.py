@@ -2,6 +2,9 @@ import os
 import shutil
 import time
 
+cwd = os.chdir('C:/Users/user/Downloads')
+
+# available extentions for the files
 file_exts = [
     ".png", # index 0
     ".jpg", # index 1
@@ -16,6 +19,7 @@ file_exts = [
     ".mobi", # index 10
     ".zip", # index 11
 ]
+
 folder_names = [
     "Images", # index 0
     "Videos", # index 1
@@ -24,9 +28,9 @@ folder_names = [
     "Audio", # index 4
     "Documents", # index 5
 ]
-cwd = os.chdir('C:/Users/user/Downloads')
 files = os.listdir(cwd)
 
+# Asks whether or not to create the folders and is the start of the program
 def foldersconfirm():
     os.system('cls' if os.name == 'nt' else 'clear')
     folder_confirmation = input("Create Folders [y/n]:")
@@ -39,6 +43,7 @@ def foldersconfirm():
     else:
         foldersconfirm()
 
+# Lists current path thats being used 
 def currentpath():
     os.system('cls' if os.name == 'nt' else 'clear')
     print()
@@ -46,14 +51,14 @@ def currentpath():
     print("Current Directory: " + os.getcwd())
     print("-" * 30)
     print()
-
+# Just prints out a list of the files for aesthetic purposes i guess
 def getfiles():
     #get list of files
     for i in range(0, len(files)):
         print(files[i])
         i += 1
     print()
-
+# Creates the folders to put the files in
 def createfolders():
     for i in range(0, len(folder_names)):
         try:
@@ -69,7 +74,9 @@ def createfolders():
     getfiles()
     movefiles()
 
-
+# Moves the files to the created folders
+# If its any other filetype than the ones in file_exts, it ignores it
+# with this aproach it makes it difficult to make an "others" folder since it can put the rest of the folders in that folder
 def movefiles():
     moveconfirm = input("Move files to folders?: [y/n]:")
     if moveconfirm == "y" or moveconfirm == 'Y':
@@ -90,7 +97,7 @@ def movefiles():
             else:
                 pass
         print("Actions Done.")
-        time.sleep(2)
+        time.sleep(2) #not sure why i used these, maybe since i liked to see the window, but you can erase these
     elif moveconfirm == "n" or moveconfirm == 'N': 
         print("No Actions Done.")
         time.sleep(2)
