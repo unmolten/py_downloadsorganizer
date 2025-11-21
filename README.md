@@ -12,6 +12,6 @@ A python interpreter is needed to run the program since i dont know how to compi
 - The **"file_exts"** variable lies the available file extentions ordered by type that the program will organize into their respective folders
 
 ## Folders
-- The program will make specific folders for each type of file, for example: **"Images"**, **"Apps"** or **"Others"** <br> The names of the folders lie on the **"folder_names"** variable.
+- The program will make specific folders for each type of file, for example: **"Images"** or **"Apps"**<br> The names of the folders lie on the **"folder_names"** variable.
 
 ### All this is subject to change as i learn more about python but in all this was a silly project i wanted to make.
