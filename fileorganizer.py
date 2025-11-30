@@ -2,31 +2,66 @@ import os
 import shutil
 import time
 
-cwd = os.chdir('C:/Users/user/Downloads')
+cwd = os.chdir('C:/Users/USER/Downloads')
 
 # available extentions for the files
-file_exts = [
-    ".png", # index 0
-    ".jpg", # index 1
-    ".webp", # index 2
-    ".exe", # index 3
-    ".mp4", # index 4
-    ".webm", # index 5
-    ".mp3", # index 6
-    ".wav", # index 7
-    ".pdf", # index 8
-    ".epub", # index 9
-    ".mobi", # index 10
-    ".zip", # index 11
+image_exts = [
+    ".png", 
+    ".jpg", 
+    ".webp", 
+]
+
+app_exts = [
+    ".exe",
+    ".msi",
+]
+
+video_exts = [
+    ".mp4", 
+    ".webm", 
+    ".avi",
+]
+
+audio_exts = [
+    #why is there so many
+    ".wav",
+    ".mp3",
+    ".ogg",
+    ".flac",
+    ".wma",
+    ".aac",
+    ".m4a",
+    ".m4b",
+    ".aiff",
+
+]
+
+doc_exts = [
+    ".pdf", 
+    ".epub", 
+    ".mobi", 
+    ".txt",
+    ".odt",
+    ".rtf",
+    ".doc",
+    ".docx",
+    ".xls",
+    ".xlsx",
+    ]
+
+zipped_exts = [
+    ".zip",
+    ".7z",
+    ".rar",
 ]
 
 folder_names = [
-    "Images", # index 0
-    "Videos", # index 1
-    "Apps", # index 2
-    "Files", # index 3
-    "Audio", # index 4
-    "Documents", # index 5
+    "Images", 
+    "Videos", 
+    "Apps", 
+    "Zipped Files", 
+    "Audio", 
+    "Documents", 
 ]
 files = os.listdir(cwd)
 
@@ -82,22 +117,24 @@ def movefiles():
     if moveconfirm == "y" or moveconfirm == 'Y':
         for i in range(0, len(files)):
             filename, filetype = os.path.splitext(files[i])
-            if filetype in file_exts[:3]:
+            print("Moving "+ files[i])
+            if filetype in image_exts:
                 shutil.move(files[i], "./Images")
-            elif filetype == file_exts[3]:
+            elif filetype in app_exts:
                 shutil.move(files[i], "./Apps")
-            elif filetype in file_exts[4:6]:
+            elif filetype in video_exts:
                 shutil.move(files[i], "./Videos")
-            elif filetype in file_exts[6:8]:
+            elif filetype in audio_exts:
                 shutil.move(files[i], "./Audio")
-            elif filetype in file_exts[8:11]:
+            elif filetype in doc_exts:
                 shutil.move(files[i], "./Documents")
-            elif filetype == file_exts[11]:
-                shutil.move(files[i],"./Files")
+            elif filetype in zipped_exts:
+                shutil.move(files[i],"./Zipped Files")
             else:
+                print("Could not move " + files[i])
                 pass
         print("Actions Done.")
-        time.sleep(2) #not sure why i used these, maybe since i liked to see the window, but you can erase these
+        time.sleep(2) # <<< not sure why i used these, maybe since i liked to see the window, but you can erase these
     elif moveconfirm == "n" or moveconfirm == 'N': 
         print("No Actions Done.")
         time.sleep(2)
