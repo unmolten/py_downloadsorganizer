@@ -61,12 +61,13 @@ folder_names = [
     "Apps", 
     "Zipped Files", 
     "Audio", 
-    "Documents", 
+    "Documents",
+    "Others", 
 ]
 files = os.listdir(cwd)
 
 # Asks whether or not to create the folders and is the start of the program
-def foldersconfirm():
+def main():
     os.system('cls' if os.name == 'nt' else 'clear')
     folder_confirmation = input("Create Folders [y/n]:")
     if folder_confirmation == "y" or folder_confirmation == 'Y':
@@ -76,7 +77,7 @@ def foldersconfirm():
         getfiles()
         movefiles()
     else:
-        foldersconfirm()
+        main()
 
 # Lists current path thats being used 
 def currentpath():
@@ -111,7 +112,6 @@ def createfolders():
 
 # Moves the files to the created folders
 # If its any other filetype than the ones in file_exts, it ignores it
-# with this aproach it makes it difficult to make an "others" folder since it can put the rest of the folders in that folder
 def movefiles():
     moveconfirm = input("Move files to folders?: [y/n]:")
     if moveconfirm == "y" or moveconfirm == 'Y':
@@ -130,9 +130,10 @@ def movefiles():
                 shutil.move(files[i], "./Documents")
             elif filetype in zipped_exts:
                 shutil.move(files[i],"./Zipped Files")
-            else:
-                print("Could not move " + files[i])
+            elif filename in folder_names: #found this solution actually and it works quite well
                 pass
+            else:
+                shutil.move(files[i], "./Others")
         print("Actions Done.")
         time.sleep(2) # <<< not sure why i used these, maybe since i liked to see the window, but you can erase these
     elif moveconfirm == "n" or moveconfirm == 'N': 
@@ -142,4 +143,4 @@ def movefiles():
         movefiles()
 
 
-foldersconfirm()
+main()
