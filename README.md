@@ -9,7 +9,7 @@ A python interpreter is needed to run the program since i dont know how to compi
 - Simply change the **"cwd"** directory, where it says "USER" to your user folder name. If you wish to use it else where just change the directory (working on how to do that within the program)
  
 ## Extentions (might change soon):
-- The **"file_exts"** variable lies the available file extentions ordered by type that the program will organize into their respective folders
+- The variables house the available file extentions ordered by type that the program will organize into their respective folders, you can add more file types if needed in their respective categories.
 
 ## Folders
 - The program will make specific folders for each type of file, for example: **"Images"** or **"Apps"**<br> The names of the folders lie on the **"folder_names"** variable.
